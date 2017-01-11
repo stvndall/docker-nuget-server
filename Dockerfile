@@ -6,7 +6,7 @@ ENV SLN=NuGet.Server.sln
 
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /app/src && curl -SL https://codeload.github.com/NuGet/NuGet.Server/tar.gz/2.11.3 | tar -xJC /app/src 
+RUN mkdir -p /app/src && curl -SL https://codeload.github.com/NuGet/NuGet.Server/tar.gz/2.11.3 | tar -xzC /app/src 
 
 WORKDIR /app/src
 

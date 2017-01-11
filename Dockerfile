@@ -10,7 +10,9 @@ RUN mkdir -p /app/src && curl -SL https://codeload.github.com/NuGet/NuGet.Server
 
 WORKDIR /app/src
 
-RUN nuget restore ${SLN}
+RUN ls
+
+RUN nuget restore
 
 RUN xbuild /p:Configuration="Mono Release" ${SLN}
   

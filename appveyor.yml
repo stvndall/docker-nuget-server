@@ -1,0 +1,5 @@
+install:
+  - nuget restore
+
+configuration:
+  - Release

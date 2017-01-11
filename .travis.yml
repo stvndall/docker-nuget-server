@@ -1,0 +1,19 @@
+sudo: required
+
+env:
+  - NAME=nuget-server IMAGE=miteke/nuget-server TAG=2.11.3
+  
+services:
+  - docker
+
+script:
+  - docker build -t "$NAME" .
+  - docker tag "$NAME" "$IMAGE":"$TAG" 
+  - docker tag "$NAME" "$IMAGE":latest
+  
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push "$IMAGE":"$TAG";
+      docker push "$IMAGE":latest;
+    fi  
